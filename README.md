@@ -10,4 +10,10 @@ support ububtu 18.04 LTS
 ./build.sh master
 ```
 
-### node join just 
+### node join 
+
+```
+# ./token.sh 192.168.2.200
+
+./token.sh [master-ip]
+```
