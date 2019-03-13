@@ -56,6 +56,9 @@ EOF
 init_master(){
 
     sudo kubeadm init --pod-network-cidr=172.168.10.0/24 --kubernetes-version=v1.13.4 --ignore-preflight-errors=NumCPU
+    sudo mkdir -p $HOME/.kube/
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
     sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
     kubectl get nodes
 }
@@ -70,3 +73,6 @@ install_docker
 if [[ $1 eq "master" ]] ; then
     init_master
 fi
+
+
+
